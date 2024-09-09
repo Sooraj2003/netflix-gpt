@@ -1,6 +1,13 @@
 # setting the project
   - npx create-react-app
   - configure tailwind inside ur application
+  - create login page
+  - form validation
+  - user authentication using firebase
+  - firebase deploy
+  - redux store for local user
+  - use of sign up/sign in/update profile and sign out api
+  - navigate react-router-dom
 
 # features
  - /
