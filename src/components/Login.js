@@ -4,7 +4,7 @@ import Header from "./Header"
 import { checkValidation } from "../utils/validate"
 import {  createUserWithEmailAndPassword,signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
+
 import { PHOTO_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -12,7 +12,7 @@ import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  
   const [isSignIn,setIsSignIn] = useState(true);
   const [errorMessage,setErrorMessage] = useState(null)
  //useRef is used to persist the data across the re-renders and it doesnt re-render whenever its value change and it is also used for dom manipuation or to access the attributes of html elements
@@ -40,7 +40,7 @@ const Login = () => {
           // Profile updated!
            const {uid,email,displayName,photoURL} = auth.currentUser;
            dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
-           navigate("/browse");
+           
           // ...
         }).catch((error) => {
           // An error occurred
@@ -63,7 +63,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           // const user = userCredential.user;
-          navigate("/browse")
+         
           
           
           // ...
