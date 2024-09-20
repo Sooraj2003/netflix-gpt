@@ -1,14 +1,15 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS, NOW_PLAYING_URL } from "../utils/constants";
 import { addNowPlayingMovies } from "../utils/movieSlice";
 
 
 const useGetNowPlayingMovies = ()=>{
     const dispatch = useDispatch();
-
+    const nowPlayingMovies = useSelector((store)=>store.movies.nowPlayingMovies);
+    //memoization calling the api only when the data is not present in the redux store ,improving the performance of application by reducing api calls
    useEffect(()=>{
-   getNowPlayingData();
+   !nowPlayingMovies && getNowPlayingData();
    },[]);
 
     const getNowPlayingData = async ()=>{

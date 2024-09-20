@@ -4,6 +4,7 @@ import { useRef, useState } from "react"
 import { API_OPTIONS } from "../utils/constants";
 import { addMovies } from "../utils/searchedMovieSlice";
 import MovieList from "./MovieList";
+import { FiCommand } from "react-icons/fi";
 
 
 const GptSearchBar = () => {
@@ -31,15 +32,15 @@ const GptSearchBar = () => {
   const movies = useSelector((store)=>store.searchedMovies.movies)
   return (
       <>
-    <div className="flex justify-center pt-[15%] w-screen">
-        <form className="bg-black w-1/2 grid grid-cols-12 p-6 " onSubmit={(e)=>e.preventDefault()}>
-            <input ref={searchText} className="px-6 py-3 col-span-9" type="text" placeholder={language[langKey].placeholderText}/>
-            <button onClick={handleGptSearchText} className="ml-2 px-4 py-3 col-span-3 bg-red-800 hover:bg-red-900 text-white font-bold text-lg rounded-lg">{language[langKey].search}</button>
+    <div className="flex justify-center pt-[0%] md:pt-[15%] w-screen">
+        <form className="bg-black w-full md:w-1/2 grid grid-cols-12 p-6 " onSubmit={(e)=>e.preventDefault()}>
+            <input ref={searchText} className="px-6 py-1 md:py-3 col-span-9" type="text" placeholder={language[langKey].placeholderText}/>
+            <button onClick={handleGptSearchText} className="ml-2 px-4 py-3 col-span-3 bg-red-800 hover:bg-red-900 text-white font-bold text-sm md:text-lg rounded-lg">{language[langKey].search}</button>
         </form>
         </div>
         {
         useLoading ?(
-        <h1 className="text-white font-bold text-3xl text-center p-4 m-4">Loading.....</h1>
+          <div className="flex w-screen  justify-center mt-52 text-5xl md:text-9xl text-white"><FiCommand className=" animate-spin" /></div>
         ) : (
         <MovieList title={searchText.current?.value} movies={movies}/>
        )}

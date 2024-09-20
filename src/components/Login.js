@@ -80,10 +80,10 @@ const Login = () => {
     <div >
         <Header/>
         <div className="absolute ">
-        <img src={BACKGROUND_URL} alt="background-image"/>
+        <img className="h-screen w-screen object-cover"src={BACKGROUND_URL} alt="background-image"/>
         </div>
-      <form onSubmit={(e)=>e.preventDefault()} className="p-10 absolute w-3/12 bg-black my-52 mx-auto right-0 left-0 bg-opacity-80 rounded-lg">
-        <h1 className="text-white font-bold text-3xl p-4">{isSignIn?"Sign In":"Sign Up"}</h1>
+      <form onSubmit={(e)=>e.preventDefault()} className="p-10 absolute h-full md:h-auto w-full md:w-3/12 bg-black my-0 md:my-52 mx-auto right-0 left-0 bg-opacity-80 rounded-lg">
+        <h1 className="text-white font-bold text-xl md:text-3xl p-4">{isSignIn?"Sign In":"Sign Up"}</h1>
         { !isSignIn && <input ref={name} className="p-4 my-3 w-full bg-gray-700 text-white" type="text" placeholder="Enter your Full name"/>}
         <input 
         className="p-4 my-3 w-full bg-gray-700 text-white" 
@@ -94,7 +94,7 @@ const Login = () => {
         <input 
         className="p-4 my-3 w-full  bg-gray-700  text-white" 
         type="password" 
-        placeholder="Enter your password"
+        placeholder="Password(a caps and special character)"
         ref={password}
         />
         <p className="text-red-600 font-medium">{errorMessage}</p>
