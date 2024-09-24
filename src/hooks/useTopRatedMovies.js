@@ -10,13 +10,21 @@ const useTopRatedMovies = ()=>{
 
    useEffect(()=>{
     !topRatedMovies && getTopRatedMovies();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
    },[]);
 
     const getTopRatedMovies = async ()=>{
-     const data = await  fetch(TOP_RATED_URL,API_OPTIONS);
-     const json = await data.json();
-    
-     dispatch(addTopRatedMovies(json.results))
+      try{
+        const data = await  fetch(TOP_RATED_URL,API_OPTIONS);
+        const json = await data.json();
+       
+        dispatch(addTopRatedMovies(json.results))
+      }
+      catch(e){
+        console.log(e+" failed fetch");
+        
+      }
+     
      
     }
 }

@@ -12,7 +12,7 @@ const MoviePage = () => {
     
     useEffect(()=>{
         dispatch(addMainTrailer(null));
-        
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
      useMovieTrailer(id.movieId);
      const mainTrailer = useSelector((store)=>store.movies.mainTrailer);

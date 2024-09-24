@@ -14,10 +14,17 @@ const useUpcomingMovies = ()=>{
    },[]);
 
     const getUpcomingMovies = async ()=>{
-     const data = await  fetch(UPCOMING_URL,API_OPTIONS);
+      try{
+        const data = await  fetch(UPCOMING_URL,API_OPTIONS);
      const json = await data.json();
     
      dispatch(addUpcomingMovies(json.results))
+      }
+      catch(e){
+        console.log(e+" failed fetch");
+        
+      }
+     
      
     }
 }

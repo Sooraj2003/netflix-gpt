@@ -10,13 +10,21 @@ const usePopularMovies = ()=>{
 
    useEffect(()=>{
    !popularMovies && getPopularMoviesData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
    },[]);
-
+  
     const getPopularMoviesData = async ()=>{
-     const data = await  fetch(POPULAR_URL,API_OPTIONS);
-     const json = await data.json();
-    
-     dispatch(addPopularMovies(json.results))
+        try{
+            const data = await  fetch(POPULAR_URL,API_OPTIONS);
+            const json = await data.json();
+           
+            dispatch(addPopularMovies(json.results))
+        }
+        catch(e){
+            console.log(e+ "failed fetch");
+            
+        }
+     
      
     }
 }
